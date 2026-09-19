@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local virtual environments
+.venv/
+venv/
+env/
+
+# Local tooling and build output
+.pytest_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
