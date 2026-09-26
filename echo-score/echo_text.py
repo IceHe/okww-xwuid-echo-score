@@ -28,6 +28,8 @@ def _converter():
 
 def simplify_echo_text(text):
     """Convert Traditional Chinese OCR to the Simplified labels used by XWUID."""
-    text = str(text)
+    # PaddleOCR sometimes uses the Japanese glyph 撃 for 擊 in Traditional
+    # Chinese stat labels (暴撃 / 攻撃). OpenCC does not normalize that glyph.
+    text = str(text).replace("撃", "擊")
     converter = _converter()
     return converter.convert(text) if converter is not None else text.translate(_ECHO_TRADITIONAL)

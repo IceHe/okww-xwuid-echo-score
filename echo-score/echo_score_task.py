@@ -3,6 +3,7 @@
 from ok import TriggerTask, og
 
 from echo_score import DEFAULT_TEMPLATE
+from echo_capture_recovery import CaptureRecoveryMonitor
 from echo_stat_overlay import ECHO_STAT_PAINTER_KEY, EchoStatBoxPainter, analyze_echo_stats
 from overlay_status import paint_okww_status
 
@@ -50,6 +51,8 @@ class EchoScoreOverlayTask(TriggerTask):
 
     def post_init(self):
         self._ensure_overlay()
+        self.capture_recovery = CaptureRecoveryMonitor(og.device_manager, self.executor.exit_event)
+        self.capture_recovery.start()
 
     def _settings(self):
         for task in self.get_tasks():
@@ -107,6 +110,8 @@ class EchoScoreOverlayTask(TriggerTask):
             overlay.clear_draw(STATUS_PAINTER_KEY)
 
     def on_destroy(self):
+        if recovery := getattr(self, "capture_recovery", None):
+            recovery.stop()
         overlay = self.get_overlay_view()
         if overlay is not None:
             self._clear(overlay, True)

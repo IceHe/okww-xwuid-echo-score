@@ -24,7 +24,9 @@ _STAT_TEXT = re.compile(
     r"攻击|生命|防御|暴击|共鸣效率|伤害加成|治疗效果|ATK|HP|DEF|Crit|Energy|DMG|Heal",
     re.IGNORECASE,
 )
-_VALUE_TEXT = re.compile(r"^\s*[+＋]?\d+(?:[.,]\d+)?\s*[%％]?\s*$")
+_VALUE_TEXT = re.compile(
+    r"^\s*(?:[+＋]?\d+(?:[.,]\d+)?|[.·。]\d{2,4})\s*[%％]?\s*$"
+)
 
 
 @dataclass(frozen=True)
