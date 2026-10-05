@@ -19,7 +19,7 @@
 
 目前经过测试，支持游戏设置为**简体中文**或**繁体中文**时识别单个声骸的主词条、副词条及数值，并进行评分。繁体中文词条和“角色名裝配中”会在匹配前转换为评分模板使用的简体名称。其他游戏语言尚未测试。
 
-当前脚本版本为 **0.3.9**，新增 XW-UID 的「心-通用」和「锁暝-通用」评分模板。更新后请重启 OKWW，使新的脚本和模板列表加载生效。
+当前脚本版本为 **0.3.10**，内置 68 套 XW-UID 角色/多模态评分模板。更新后请重启 OKWW，使新的脚本和模板列表加载生效。
 
 ## 安装
 
@@ -54,6 +54,20 @@
 ## 构建与目录结构
 
 源码位于 [`echo-score/`](echo-score/)，其中包含设置页面、后台识别任务、繁简文字规范化、评分逻辑和角色模板数据。`echo-score.zip` 是该目录的打包副本，包含顶层 `echo-score/` 文件夹。
+
+### 维护者更新 XW-UID 权重
+
+更新脚本位于 [开发仓库的 slim 分支](https://github.com/IceHe/ok-wuthering-waves/tree/slim)。
+在 `E:/ok-wuthering-waves` 运行：
+
+```powershell
+.\.venv\Scripts\python.exe scripts\update_xwuid_echo_templates.py --check
+.\.venv\Scripts\python.exe scripts\update_xwuid_echo_templates.py --publish --commit-push
+```
+
+第一条只检查变化；第二条拉取新角色、所有模态及更新权重，测试后同步 D 盘安装目录和本仓库，
+递增脚本版本、重新打包 ZIP，并提交推送两个仓库。无变化时跳过发布。
+提交推送前两个仓库需无未提交改动。更多选项见开发仓库 README。
 
 ## 致谢与许可
 
