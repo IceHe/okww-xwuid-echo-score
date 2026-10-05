@@ -69,6 +69,20 @@
 递增脚本版本、重新打包 ZIP，并提交推送两个仓库。无变化时跳过发布。
 提交推送前两个仓库需无未提交改动。更多选项见开发仓库 README。
 
+### 仓库职责与发布状态
+
+本仓库的 `main` 分支用于分发；源码开发、更新脚本及测试维护在
+`IceHe/ok-wuthering-waves` 的 `slim` 分支。开发仓库修改评分代码或模板后，必须同步本仓库的
+`echo-score/`，重新生成内容一致的 `echo-score.zip`，并将两个仓库分别提交推送。
+
+2026-10-05 的 **0.3.10** 产物与维护流程已在提交
+[5fcec3f](https://github.com/IceHe/okww-xwuid-echo-score/commit/5fcec3f041b69bc4badca9e2a3234bc3744ae8e4)
+推送到 GitHub `main`；该次发布包含 68 套模板，三个导入目录和 ZIP 已校验，主项目 61 项测试通过。
+这是功能发布记录，后续文档提交不会改变评分包版本。
+
+完整的更新脚本选项、目录关系及操作说明见
+[声骸评分维护与分发](https://github.com/IceHe/ok-wuthering-waves/blob/slim/docs/echo-score-maintenance.md)。
+
 ## 致谢与许可
 
 - 感谢 [老王同学 OK](https://github.com/ok-oldking/ok-wuthering-waves) 开发 OKWW 及其 OKScript 机制；OKWW 使用 GNU Affero General Public License v3（AGPL-3.0）。

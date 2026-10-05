@@ -10,3 +10,7 @@
 `.venv/Scripts/python.exe scripts/update_xwuid_echo_templates.py --publish --commit-push`。
 该脚本全量拉取角色和模态权重，自动执行测试、目录同步、ZIP 校验和两个仓库的提交推送；
 两个仓库必须先保持干净。用 `--check` 可先查看差异，无变化时不会重复发布。
+
+上述同步要求也应维护在主项目 `E:/ok-wuthering-waves/AGENTS.md` 中。
+仅修改文档时，提交并推送对应文档即可，无需递增评分包版本或重打内容未变化的产物。
+维护说明见主项目 `docs/echo-score-maintenance.md`。
